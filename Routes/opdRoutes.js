@@ -45,7 +45,7 @@ router.get('/:citizen_id', async (req, res) => {
 });
 
 router.put('/update/:citizen_id', async (req, res) => {
-    const
+    // const
 });
 
 router.delete('/delete/:citizen_id', async (req, res) => {
