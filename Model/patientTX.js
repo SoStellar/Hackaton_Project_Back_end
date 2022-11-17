@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const TxSchema = new mongoose.Schema({
-    cure_date: { type: String },
+    cure_date: { type: Date },
     client_id: { type: String },
     diagnose: [],
     treat: [],

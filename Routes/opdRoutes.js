@@ -16,7 +16,6 @@ router.get('/', async (req, res) => {
 router.post("/", async (req, res) => {
     try {
         const { client_id, title, fname, lname, address, birthdate, age, citizen_id, personal_sym, drug_allergy, surge } = req.body;
-
         const opdcard = await OPDcard.create({
             client_id,
             title,
@@ -45,9 +44,29 @@ router.get('/:citizen_id', async (req, res) => {
 });
 
 router.put('/update/:citizen_id', async (req, res) => {
-    // const
+    const patientID = req.params.citizen_id;
+    const update = req.query.update;
+    const { value } = req.body;
+    const data = {
+        $set: {
+            [update]: value,
+        }
+    }
+    const updateDatabase = await OPDcard.updateOne({ citizen_id: patientID }, data);
+    res.sendStatus(200, updateDatabase);
 });
-
+router.put('/updateArray/:citizen_id', async (req, res) => {
+    const { personal_sym, drug_allergy, surge } = req.body;
+    const patientID = req.params.id;
+    const DataUser = await OPDcard.find({ citizen_id: patientID });
+    DataUser[0].personal_sym.push(citizen_id);
+    DataUser[0].drug_allergy.push(citizen_id);
+    const Block = [...new Set(DataUser[0].personal_sym)];
+    DataUser[0].personal_sym = Block;
+    console.log(DataUser[0].personal_sym);
+    const updateDatabase = await Users.updateOne(DataUser[0]);
+    res.sendStatus(200);
+})
 router.delete('/delete/:citizen_id', async (req, res) => {
     const patientId = req.params.citizen_id;
     const result = await OPDcard.find({});

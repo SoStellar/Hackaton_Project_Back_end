@@ -6,7 +6,7 @@ const OpdSchema = new mongoose.Schema({
     fname: { type: String },
     lname: { type: String },
     address: { type: String },
-    birthdate: { type: String },
+    birthdate: { type: Date },
     age: { type: Number },
     citizen_id: { type: String },
     personal_sym: [],
