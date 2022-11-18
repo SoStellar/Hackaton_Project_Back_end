@@ -32,6 +32,46 @@ router.get("/:client_id", async (req, res) => {
     const txcard = result.find((txcard) => txcard.client_id == patientID);
     res.json(txcard);
 });
+
+router.put('/update/:client_id', async (req, res) => {
+    const patientID = req.params.client_id;
+    const update = req.query.update;
+    const { value } = req.body;
+    const data = {
+        $set: {
+            [update]: value,
+        }
+    }
+    const updateDatabase = await TXcard.updateOne({ client_id: patientID }, data);
+    res.sendStatus(200, updateDatabase);
+});
+
+router.put('/updateArray/:client_id', async (req, res) => {
+    const update = req.query.update;
+    const patientID = req.params.client_id;
+    const { value } = req.body;
+    const data = {
+        $push: {
+            [update]: value,
+        }
+    }
+    const updateDatabase = await TXcard.updateOne({ client_id: patientID }, data);
+    res.sendStatus(200, updateDatabase);
+})
+
+router.put('/deleteArray/:client_id', async (req, res) => {
+    const update = req.query.update;
+    const patientID = req.params.client_id;
+    const { value } = req.body;
+    const data = {
+        $pull: {
+            [update]: value,
+        }
+    }
+    const updateDatabase = await TXcard.updateOne({ client_id: patientID }, data);
+    res.sendStatus(200, updateDatabase);
+})
+
 router.delete('/delete/:client_id', async (req, res) => {
     const patientId = req.params.client_id;
     const result = await TXcard.find({});
