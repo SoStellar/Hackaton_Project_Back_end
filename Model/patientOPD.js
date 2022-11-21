@@ -8,6 +8,7 @@ const OpdSchema = new mongoose.Schema({
     address: { type: String },
     birthdate: { type: Date },
     age: { type: Number },
+    tel: { type: String },
     citizen_id: { type: String },
     personal_sym: [],
     drug_allergy: [],

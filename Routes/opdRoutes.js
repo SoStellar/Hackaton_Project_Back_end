@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 
 router.post("/", async (req, res) => {
     try {
-        const { client_id, title, fname, lname, address, birthdate, age, citizen_id, personal_sym, drug_allergy, surge, myProfile } = req.body;
+        const { client_id, title, fname, lname, address, birthdate, age, citizen_id, tel, personal_sym, drug_allergy, surge, myProfile } = req.body;
 
         const opdcard = await OPDcard.create({
             client_id,
@@ -26,6 +26,7 @@ router.post("/", async (req, res) => {
             birthdate,
             age,
             citizen_id,
+            tel,
             personal_sym,
             drug_allergy,
             surge,
