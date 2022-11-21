@@ -15,7 +15,8 @@ router.get('/', async (req, res) => {
 
 router.post("/", async (req, res) => {
     try {
-        const { client_id, title, fname, lname, address, birthdate, age, citizen_id, personal_sym, drug_allergy, surge } = req.body;
+        const { client_id, title, fname, lname, address, birthdate, age, citizen_id, personal_sym, drug_allergy, surge, myProfile } = req.body;
+
         const opdcard = await OPDcard.create({
             client_id,
             title,
@@ -28,6 +29,7 @@ router.post("/", async (req, res) => {
             personal_sym,
             drug_allergy,
             surge,
+            myProfile
         })
 
         res.status(201).json(opdcard);
@@ -88,4 +90,5 @@ router.delete('/delete/:citizen_id', async (req, res) => {
     const deletePatient = await OPDcard.deleteOne(Datapatient[0]);
     res.sendStatus(204);
 });
+
 module.exports = router;

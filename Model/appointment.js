@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
 
 const AppointmentSchema = new mongoose.Schema({
-    client_id: { type: String },
-    appoint_date: { type: Date },
-    do_list: []
+    id: { type: String },
+    start: { type: Date },
+    end: { type: Date },
+    title: { type: String },
+    description: { type: String },
+    allDay: { type: Boolean },
+    free: { type: Boolean },
+    color: { type: String }
 })
 module.exports = mongoose.model("appointments", AppointmentSchema);

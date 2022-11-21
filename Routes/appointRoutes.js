@@ -29,10 +29,10 @@ router.get("/:appoint_date", async (req, res) => {
     const appoint = result.find((appoint) => appoint.appoint_date == date);
     res.json(appoint);
 });
-router.delete('/delete/:appoint_date', async (req, res) => {
-    const date = req.params.appoint_date;
+router.delete('/delete/:id', async (req, res) => {
+    const appointID = req.params.id;
     const result = await Appoint.find({});
-    const Dataappoint = await Appoint.find({ appoint_date: date });
+    const Dataappoint = await Appoint.find({ id: appointID });
     const deleteAppoint = await Appoint.deleteOne(Dataappoint[0]);
     res.sendStatus(204);
 })

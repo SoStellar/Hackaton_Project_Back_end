@@ -12,5 +12,6 @@ const OpdSchema = new mongoose.Schema({
     personal_sym: [],
     drug_allergy: [],
     surge: [],
+    myProfile: { type: String },
 })
 module.exports = mongoose.model("opds", OpdSchema);
