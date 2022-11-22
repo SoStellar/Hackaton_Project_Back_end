@@ -12,9 +12,14 @@ router.post("/", async (req, res) => {
     try {
         const { client_id, appoint_date, do_list } = req.body;
         const appointment = await Appoint.create({
-            client_id,
-            appoint_date,
-            do_list,
+            id,
+            start,
+            end,
+            title,
+            description,
+            allDay,
+            free,
+            color
         })
 
         res.status(201).json(appointment);
