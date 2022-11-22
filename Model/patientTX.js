@@ -6,6 +6,7 @@ const TxSchema = new mongoose.Schema({
     diagnose: [],
     treat: [],
     teeth_po: [],
+    comment: { type: String },
     xray_film: [],
 })
 module.exports = mongoose.model("txes", TxSchema);

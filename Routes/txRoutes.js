@@ -10,13 +10,14 @@ router.get('/', async (req, res) => {
 
 router.post("/", async (req, res) => {
     try {
-        const { cure_date, client_id, diagnose, treat, teeth_po, xray_film } = req.body;
+        const { cure_date, client_id, diagnose, treat, teeth_po, comment, xray_film } = req.body;
         const txcard = await TXcard.create({
             cure_date,
             client_id,
             diagnose,
             treat,
             teeth_po,
+            comment,
             xray_film,
         })
 

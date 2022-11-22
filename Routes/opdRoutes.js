@@ -46,6 +46,26 @@ router.get('/:citizen_id', async (req, res) => {
     res.json(opdcard);
 });
 
+router.put('/:citizen_id', async (req, res) => {
+    const { title, fname, lname, address, birthdate, citizen_id, tel, personal_sym, drug_allergy, surge } = req.body;
+    const patientID = req.params.citizen_id;
+    const opd = data.find((opd) => opd.citizen_id === patientId);
+
+    opd.title = title;
+    opd.fname = fname;
+    opd.lname = lname;
+    opd.address = address;
+    opd.birthdate = birhdate;
+    opd.citizen_id = citizen_id;
+    opd.tel = tel;
+    opd.personal_sym = personal_sym;
+    opd.drug_allergy = drug_allergy;
+    opd.surge = surge;
+
+    res.json(opd);
+
+});
+
 router.put('/update/:citizen_id', async (req, res) => {
     const patientID = req.params.citizen_id;
     const update = req.query.update;
