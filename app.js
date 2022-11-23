@@ -21,6 +21,6 @@ app.use('/opd', patientOPD);
 app.use('/tx', patientTX);
 app.use('/appoint', appointment)
 
-app.listen(8000, () => {
+app.listen(process.env.PORT, () => {
     console.log('Listening on port 8000');
 });
