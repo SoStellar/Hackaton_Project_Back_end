@@ -5,9 +5,9 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 
-const patientOPD = require('./Routes/opdRoutes');
-const patientTX = require('./Routes/txRoutes');
-const appointment = require('./Routes/appointRoutes');
+const patientOPD = require('./routes/opdRoutes');
+const patientTX = require('./routes/txRoutes');
+const appointment = require('./routes/appointRoutes');
 const app = express();
 
 
