@@ -30,6 +30,12 @@ router.post("/", async (req, res) => {
 router.get("/:client_id", async (req, res) => {
     const patientID = req.params.client_id;
     const result = await TXcard.find({});
+    const txcard = result.filter((txcard) => txcard.client_id == patientID);
+    res.json(txcard);
+});
+router.get("/xrayfilm/:client_id", async (req, res) => {
+    const patientID = req.params.client_id;
+    const result = await TXcard.find({});
     const txcard = result.find((txcard) => txcard.client_id == patientID);
     res.json(txcard);
 });
